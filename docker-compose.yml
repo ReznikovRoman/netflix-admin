@@ -1,0 +1,35 @@
+services:
+  db:
+    build:
+      context: ./conf/postgres
+      dockerfile: ./Dockerfile
+    environment:
+      - POSTGRES_USER=${NA_DB_USER}
+      - POSTGRES_PASSWORD=${NA_DB_PASSWORD}
+      - POSTGRES_DB=${NA_DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  server:
+    platform: linux/amd64
+    restart: always
+    build:
+      context: .
+    env_file:
+      - $ENV
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: >
+      bash -c "cd /app
+      && django-cadmin migrate
+      && django-cadmin collectstatic --no-input
+      && django-cadmin runserver_plus --print-sql 0.0.0.0:8000"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
