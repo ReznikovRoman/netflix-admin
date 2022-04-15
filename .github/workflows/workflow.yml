@@ -38,8 +38,8 @@ jobs:
           - context: .
             dockerfile: ./dev.Dockerfile
             image: yandexmiddleteamv1/netflix-admin
-          - context: ./conf/docker
-            dockerfile: ./conf/docker/Dockerfile
+          - context: ./conf/postgres
+            dockerfile: ./conf/postgres/Dockerfile
             image: yandexmiddleteamv1/netflix-admin-db
     permissions:
       contents: read
