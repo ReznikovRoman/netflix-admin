@@ -10,7 +10,7 @@ repos:
   hooks:
     - id: flake8
       name: Run linter
-      args: [--config, 01_etl/netflix/.flake8]
+      args: [--config, ./.flake8]
       additional_dependencies: [
         pep8-naming,
         flake8-commas,
