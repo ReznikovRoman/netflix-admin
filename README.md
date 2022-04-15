@@ -96,7 +96,7 @@ docker-compose build
 docker-compose up
 ```
 
-**Для успешного прохождения тестов в Postman нужно заполнить БД тестовыми данными**
+**Для заполнения БД тестовыми данными**
 ```shell
 docker-compose run --rm server bash -c "cd /app/scripts/load_db && python load_data.py"
 ```
