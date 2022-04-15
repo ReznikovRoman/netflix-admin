@@ -39,7 +39,7 @@ jobs:
             dockerfile: ./dev.Dockerfile
             image: yandexmiddleteamv1/netflix-admin
           - context: ./conf/docker
-            dockerfile: ./Dockerfile
+            dockerfile: ./conf/docker/Dockerfile
             image: yandexmiddleteamv1/netflix-admin-db
     permissions:
       contents: read
