@@ -41,7 +41,8 @@ class BaseSQLiteSchema(ABC):
 class Filmwork:
     title: str
     type: str
-    creation_date: datetime.date | None
+    release_date: datetime.date | None
+    age_rating: str
     rating: float | None
     description: str | None
     file_path: str | None
@@ -55,9 +56,9 @@ class FilmworkPg(BasePgSchema, Filmwork):
 
     def _prepare_fields(self) -> tuple:
         return (
-            self.id, self.title, self.description or "", self.creation_date, self.rating,
+            self.id, self.title, self.description or "", self.release_date, self.rating,
             FILMWORK_TYPE_SQLITE_TO_PG_MAP[self.type],
-            self.created, self.modified, self.file_path,
+            self.created, self.modified, self.file_path, self.age_rating,
         )
 
     def to_tuple(self) -> tuple:
@@ -69,7 +70,10 @@ class FilmworkPg(BasePgSchema, Filmwork):
 
     @staticmethod
     def db_fieldnames() -> tuple[str, ...]:
-        return "id", "title", "description", "creation_date", "rating", "type", "created", "modified", "file_path"
+        return (
+            "id", "title", "description", "release_date", "rating", "type", "created", "modified", "file_path",
+            "age_rating",
+        )
 
 
 @dataclass
@@ -81,8 +85,8 @@ class FilmworkSQLite(BaseSQLiteSchema, Filmwork):
     def to_pg(self) -> FilmworkPg:
         return FilmworkPg(
             id=self.id, title=self.title, type=self.type, rating=self.rating, description=self.description,
-            file_path=self.file_path, creation_date=self.creation_date,
-            created=self.created_at, modified=self.updated_at,
+            file_path=self.file_path, release_date=self.release_date,
+            created=self.created_at, modified=self.updated_at, age_rating=self.age_rating,
         )
 
 
