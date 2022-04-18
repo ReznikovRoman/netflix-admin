@@ -20,5 +20,5 @@ class FilmworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Filmwork
         fields = [
-            "id", "title", "description", "creation_date", "rating", "type", "genres", "actors", "directors", "writers",
+            "id", "title", "description", "release_date", "rating", "type", "genres", "actors", "directors", "writers",
         ]

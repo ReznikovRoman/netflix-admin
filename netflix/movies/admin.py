@@ -21,7 +21,7 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(Filmwork)
 class FilmworkAdmin(admin.ModelAdmin):
-    list_display = ('title', 'type', 'rating', 'creation_date')
+    list_display = ('title', 'type', 'rating', 'release_date')
     search_fields = ('title',)
     list_filter = ('type',)
     inlines = (GenreFilmworkInline, PersonFilmworkInline)

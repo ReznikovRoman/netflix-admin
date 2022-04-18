@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-18 14:10+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: movies/apps.py:8 movies/models.py:84
+msgid "films"
+msgstr ""
+
+#: movies/models.py:26
+msgid "name"
+msgstr ""
+
+#: movies/models.py:27 movies/models.py:62
+msgid "description"
+msgstr ""
+
+#: movies/models.py:31 movies/models.py:95
+msgid "genre"
+msgstr ""
+
+#: movies/models.py:32
+msgid "genres"
+msgstr ""
+
+#: movies/models.py:41
+msgid "Film"
+msgstr ""
+
+#: movies/models.py:42
+msgid "TV show"
+msgstr ""
+
+#: movies/models.py:51
+msgid "G: General audience"
+msgstr ""
+
+#: movies/models.py:52
+msgid "PG: Parental guidance suggested"
+msgstr ""
+
+#: movies/models.py:53
+msgid "PG-13: Parents cautioned"
+msgstr ""
+
+#: movies/models.py:54
+msgid "R: Restricted"
+msgstr ""
+
+#: movies/models.py:55
+msgid "NC-17: Adults only"
+msgstr ""
+
+#: movies/models.py:61
+msgid "title"
+msgstr ""
+
+#: movies/models.py:63
+msgid "release date"
+msgstr ""
+
+#: movies/models.py:65
+msgid "rating"
+msgstr ""
+
+#: movies/models.py:74
+msgid "film's type"
+msgstr ""
+
+#: movies/models.py:76
+msgid "age rating"
+msgstr ""
+
+#: movies/models.py:77
+msgid "file"
+msgstr ""
+
+#: movies/models.py:83 movies/models.py:93 movies/models.py:132
+msgid "film"
+msgstr ""
+
+#: movies/models.py:100
+msgid "film's genre"
+msgstr ""
+
+#: movies/models.py:101
+msgid "film's genres"
+msgstr ""
+
+#: movies/models.py:110
+msgid "full name"
+msgstr ""
+
+#: movies/models.py:114 movies/models.py:134
+msgid "crew member"
+msgstr ""
+
+#: movies/models.py:115
+msgid "crew members"
+msgstr ""
+
+#: movies/models.py:124
+msgid "actor"
+msgstr ""
+
+#: movies/models.py:125
+msgid "director"
+msgstr ""
+
+#: movies/models.py:126
+msgid "writer"
+msgstr ""
+
+#: movies/models.py:135
+msgid "role"
+msgstr ""
+
+#: movies/models.py:140
+msgid "film crew member"
+msgstr ""
+
+#: movies/models.py:141
+msgid "film crew members"
+msgstr ""

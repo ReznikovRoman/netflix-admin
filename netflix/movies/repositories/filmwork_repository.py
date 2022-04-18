@@ -21,7 +21,7 @@ class FilmworkRepository:
                     "persons__full_name", filter=Q(personfilmwork__role=PersonRole.WRITER.value), distinct=True),
             )
             .values(
-                "id", "title", "description", "creation_date", "rating", "type",
+                "id", "title", "description", "release_date", "rating", "type",
             )
             .annotate(
                 genres=F("genres_list"),

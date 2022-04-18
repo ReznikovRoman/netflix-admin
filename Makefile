@@ -1,4 +1,5 @@
 REQUIREMENTS_DIR := requirements
+SRC_DIR := netflix
 PIP_COMPILE_ARGS := --generate-hashes --no-header --no-emit-index-url --verbose
 PIP_COMPILE := cd $(REQUIREMENTS_DIR) && pip-compile $(PIP_COMPILE_ARGS)
 DJANGO_ADMIN := django-cadmin
@@ -14,11 +15,11 @@ lint:
 
 .PHONY: po
 po:
-	$(DJANGO_ADMIN) makemessages --all --no-wrap --add-location file
+	cd $(SRC_DIR) && $(DJANGO_ADMIN) makemessages --no-wrap --locale=en --locale=ru
 
 .PHONY: mo
 mo:
-	$(DJANGO_ADMIN) compilemessages
+	cd $(SRC_DIR) && $(DJANGO_ADMIN) compilemessages --locale=en --locale=ru
 
 .PHONY: compile-requirements
 compile-requirements:

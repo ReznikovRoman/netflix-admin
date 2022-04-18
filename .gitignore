@@ -26,6 +26,7 @@ venv/
 *.crt
 
 # local
+conf/postgres/scripts/dump.sql
 local_scripts
 
 # netflix app
