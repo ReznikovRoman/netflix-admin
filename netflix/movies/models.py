@@ -42,12 +42,25 @@ class FilmworkType(models.TextChoices):
     TV_SHOW = 'TV', _('TV show')
 
 
+class FilmworkAgeRating(models.TextChoices):
+    """Возрастной рейтинг фильма.
+
+    Список возрастных рейтингов: https://bit.ly/3xuSpB0.
+    """
+
+    GENERAL = "G", _("G: General audience")
+    PARENTAL_GUIDANCE = "PG", _("PG: Parental guidance suggested")
+    PARENTS = "PG-13", _("PG-13: Parents cautioned")
+    RESTRICTED = "R", _("R: Restricted")
+    ADULTS = "NC-17", _("NC-17: Adults only")
+
+
 class Filmwork(UUIDMixin, TimeStampedMixin):
     """Фильм в онлайн-кинотеатре."""
 
     title = models.CharField(_('title'), max_length=255)
     description = models.TextField(_('description'), blank=True)
-    creation_date = models.DateField(_('release date'), null=True, blank=True, db_index=True)
+    release_date = models.DateField(_('release date'), null=True, blank=True, db_index=True)
     rating = models.FloatField(
         _('rating'),
         null=True,
@@ -59,6 +72,8 @@ class Filmwork(UUIDMixin, TimeStampedMixin):
     )
     type = models.CharField(  # noqa: VNE003
         _("film's type"), max_length=2, choices=FilmworkType.choices, default=FilmworkType.MOVIE)
+    age_rating = models.CharField(
+        _("age rating"), max_length=31, choices=FilmworkAgeRating.choices, default=FilmworkAgeRating.GENERAL)
     file_path = models.FileField(_('file'), blank=True, null=True, upload_to='movies/')
     genres = models.ManyToManyField(Genre, through='GenreFilmwork')
     persons = models.ManyToManyField("Person", through="PersonFilmwork")

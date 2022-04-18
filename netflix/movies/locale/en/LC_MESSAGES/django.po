@@ -16,124 +16,124 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: movies/apps.py:8 movies/models.py:84
 msgid "films"
-msgstr "фильмы"
+msgstr ""
 
 #: movies/models.py:26
 msgid "name"
-msgstr "название"
+msgstr ""
 
 #: movies/models.py:27 movies/models.py:62
 msgid "description"
-msgstr "описание"
+msgstr ""
 
 #: movies/models.py:31 movies/models.py:95
 msgid "genre"
-msgstr "жанр"
+msgstr ""
 
 #: movies/models.py:32
 msgid "genres"
-msgstr "жанры"
+msgstr ""
 
 #: movies/models.py:41
 msgid "Film"
-msgstr "Полнометражный фильм"
+msgstr ""
 
 #: movies/models.py:42
 msgid "TV show"
-msgstr "ТВ шоу"
+msgstr ""
 
 #: movies/models.py:51
 msgid "G: General audience"
-msgstr "G: General audience"
+msgstr ""
 
 #: movies/models.py:52
 msgid "PG: Parental guidance suggested"
-msgstr "PG: Parental guidance suggested"
+msgstr ""
 
 #: movies/models.py:53
 msgid "PG-13: Parents cautioned"
-msgstr "PG-13: Parents strongly cautioned"
+msgstr ""
 
 #: movies/models.py:54
 msgid "R: Restricted"
-msgstr "R: Restricted"
+msgstr ""
 
 #: movies/models.py:55
 msgid "NC-17: Adults only"
-msgstr "NC-17: Adults only"
+msgstr ""
 
 #: movies/models.py:61
 msgid "title"
-msgstr "заголовок"
+msgstr ""
 
 #: movies/models.py:63
 msgid "release date"
-msgstr "дата выхода"
+msgstr ""
 
 #: movies/models.py:65
 msgid "rating"
-msgstr "рейтинг"
+msgstr ""
 
 #: movies/models.py:74
 msgid "film's type"
-msgstr "тип фильма"
+msgstr ""
 
 #: movies/models.py:76
 msgid "age rating"
-msgstr "возрастной рейтинг"
+msgstr ""
 
 #: movies/models.py:77
 msgid "file"
-msgstr "файл"
+msgstr ""
 
 #: movies/models.py:83 movies/models.py:93 movies/models.py:132
 msgid "film"
-msgstr "фильм"
+msgstr ""
 
 #: movies/models.py:100
 msgid "film's genre"
-msgstr "жанр фильма"
+msgstr ""
 
 #: movies/models.py:101
 msgid "film's genres"
-msgstr "жанры фильма"
+msgstr ""
 
 #: movies/models.py:110
 msgid "full name"
-msgstr "полное имя"
+msgstr ""
 
 #: movies/models.py:114 movies/models.py:134
 msgid "crew member"
-msgstr "участник съемочной группы"
+msgstr ""
 
 #: movies/models.py:115
 msgid "crew members"
-msgstr "участники съемочной группы"
+msgstr ""
 
 #: movies/models.py:124
 msgid "actor"
-msgstr "актер"
+msgstr ""
 
 #: movies/models.py:125
 msgid "director"
-msgstr "режиссер"
+msgstr ""
 
 #: movies/models.py:126
 msgid "writer"
-msgstr "сценарист"
+msgstr ""
 
 #: movies/models.py:135
 msgid "role"
-msgstr "роль"
+msgstr ""
 
 #: movies/models.py:140
 msgid "film crew member"
-msgstr "участник съемочной группы фильма"
+msgstr ""
 
 #: movies/models.py:141
 msgid "film crew members"
-msgstr "участники съемочной группы фильма"
+msgstr ""
