@@ -41,6 +41,7 @@ class BaseSQLiteSchema(ABC):
 class Filmwork:
     title: str
     type: str
+    access_type: str
     release_date: datetime.date | None
     age_rating: str
     rating: float | None
@@ -58,7 +59,7 @@ class FilmworkPg(BasePgSchema, Filmwork):
         return (
             self.id, self.title, self.description or "", self.release_date, self.rating,
             FILMWORK_TYPE_SQLITE_TO_PG_MAP[self.type],
-            self.created, self.modified, self.file_path, self.age_rating,
+            self.created, self.modified, self.file_path, self.age_rating, self.access_type,
         )
 
     def to_tuple(self) -> tuple:
@@ -72,7 +73,7 @@ class FilmworkPg(BasePgSchema, Filmwork):
     def db_fieldnames() -> tuple[str, ...]:
         return (
             "id", "title", "description", "release_date", "rating", "type", "created", "modified", "file_path",
-            "age_rating",
+            "age_rating", "access_type",
         )
 
 
@@ -86,7 +87,7 @@ class FilmworkSQLite(BaseSQLiteSchema, Filmwork):
         return FilmworkPg(
             id=self.id, title=self.title, type=self.type, rating=self.rating, description=self.description,
             file_path=self.file_path, release_date=self.release_date,
-            created=self.created_at, modified=self.updated_at, age_rating=self.age_rating,
+            created=self.created_at, modified=self.updated_at, age_rating=self.age_rating, access_type=self.access_type,
         )
 
 
