@@ -55,6 +55,13 @@ class FilmworkAgeRating(models.TextChoices):
     ADULTS = "NC-17", _("NC-17: Adults only")
 
 
+class FilmworkAccessType(models.TextChoices):
+    """Доступность фильма для просмотра."""
+
+    PUBLIC = "public", _("Public")
+    SUBSCRIPTION = "subscription", _("Subscription")
+
+
 class Filmwork(UUIDMixin, TimeStampedMixin):
     """Фильм в онлайн-кинотеатре."""
 
@@ -70,6 +77,8 @@ class Filmwork(UUIDMixin, TimeStampedMixin):
             MaxValueValidator(100),
         ],
     )
+    access_type = models.CharField(
+        _("access type"), max_length=31, choices=FilmworkAccessType.choices, default=FilmworkAccessType.PUBLIC)
     type = models.CharField(  # noqa: VNE003
         _("film's type"), max_length=2, choices=FilmworkType.choices, default=FilmworkType.MOVIE)
     age_rating = models.CharField(

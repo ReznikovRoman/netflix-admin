@@ -23,7 +23,7 @@ class GenreAdmin(admin.ModelAdmin):
 class FilmworkAdmin(admin.ModelAdmin):
     list_display = ('title', 'type', 'rating', 'release_date')
     search_fields = ('title',)
-    list_filter = ('type',)
+    list_filter = ('type', 'access_type')
     inlines = (GenreFilmworkInline, PersonFilmworkInline)
 
     def get_queryset(self, request):
