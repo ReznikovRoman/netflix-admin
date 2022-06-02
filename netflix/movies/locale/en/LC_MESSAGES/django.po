@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-18 14:10+0300\n"
+"POT-Creation-Date: 2022-06-02 14:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: movies/apps.py:8 movies/models.py:84
+#: movies/apps.py:8 movies/models.py:93
 msgid "films"
 msgstr ""
 
@@ -26,11 +26,11 @@ msgstr ""
 msgid "name"
 msgstr ""
 
-#: movies/models.py:27 movies/models.py:62
+#: movies/models.py:27 movies/models.py:69
 msgid "description"
 msgstr ""
 
-#: movies/models.py:31 movies/models.py:95
+#: movies/models.py:31 movies/models.py:104
 msgid "genre"
 msgstr ""
 
@@ -67,73 +67,85 @@ msgid "NC-17: Adults only"
 msgstr ""
 
 #: movies/models.py:61
+msgid "Public"
+msgstr ""
+
+#: movies/models.py:62
+msgid "Subscription"
+msgstr ""
+
+#: movies/models.py:68
 msgid "title"
 msgstr ""
 
-#: movies/models.py:63
+#: movies/models.py:70
 msgid "release date"
 msgstr ""
 
-#: movies/models.py:65
+#: movies/models.py:72
 msgid "rating"
 msgstr ""
 
-#: movies/models.py:74
+#: movies/models.py:81
+msgid "access type"
+msgstr ""
+
+#: movies/models.py:83
 msgid "film's type"
 msgstr ""
 
-#: movies/models.py:76
+#: movies/models.py:85
 msgid "age rating"
 msgstr ""
 
-#: movies/models.py:77
+#: movies/models.py:86
 msgid "file"
 msgstr ""
 
-#: movies/models.py:83 movies/models.py:93 movies/models.py:132
+#: movies/models.py:92 movies/models.py:102 movies/models.py:141
 msgid "film"
 msgstr ""
 
-#: movies/models.py:100
+#: movies/models.py:109
 msgid "film's genre"
 msgstr ""
 
-#: movies/models.py:101
+#: movies/models.py:110
 msgid "film's genres"
 msgstr ""
 
-#: movies/models.py:110
+#: movies/models.py:119
 msgid "full name"
 msgstr ""
 
-#: movies/models.py:114 movies/models.py:134
+#: movies/models.py:123 movies/models.py:143
 msgid "crew member"
 msgstr ""
 
-#: movies/models.py:115
+#: movies/models.py:124
 msgid "crew members"
 msgstr ""
 
-#: movies/models.py:124
+#: movies/models.py:133
 msgid "actor"
 msgstr ""
 
-#: movies/models.py:125
+#: movies/models.py:134
 msgid "director"
 msgstr ""
 
-#: movies/models.py:126
+#: movies/models.py:135
 msgid "writer"
 msgstr ""
 
-#: movies/models.py:135
+#: movies/models.py:144
 msgid "role"
 msgstr ""
 
-#: movies/models.py:140
+#: movies/models.py:149
 msgid "film crew member"
 msgstr ""
 
-#: movies/models.py:141
+#: movies/models.py:150
 msgid "film crew members"
 msgstr ""
