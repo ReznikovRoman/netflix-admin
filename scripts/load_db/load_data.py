@@ -23,7 +23,7 @@ logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.DEBUG)
 
 
 class SQLiteLoader:
-    """Загрузчик данных из `sqlite`."""
+    """Data extractor from the SQLite database."""
 
     BATCH_SIZE: Final[int] = int(os.environ.get("DB_SQLITE_BATCH_SIZE", 500))
 
@@ -59,7 +59,7 @@ class SQLiteLoader:
         yield from self._load_table(sql, schema_class)
 
     def load_batches(self) -> Iterator[TableBatchDump]:
-        """Выгружает данные из sqlite пачками по `SQLiteLoader.BATCH_SIZE`."""
+        """Load data from sqlite by chunks of `SQLiteLoader.BATCH_SIZE` size."""
         schema_sql_map: dict[SQLiteSchemaClass, SQL] = {
             FilmworkSQLite: """SELECT * FROM film_work""",
             PersonSQLite: """SELECT * FROM person""",
@@ -73,7 +73,7 @@ class SQLiteLoader:
 
 
 class PostgresSaver:
-    """Загрузчик данных в `postgres`."""
+    """Data loader to the Postgres database."""
 
     BATCH_SIZE: Final[int] = int(os.environ.get("NA_DB_POSTGRES_BATCH_SIZE", 50))
 
@@ -118,7 +118,7 @@ class PostgresSaver:
 
 
 def load_from_sqlite(connection: sqlite3.Connection, pg_conn: _connection) -> None:
-    """Основной метод загрузки данных из SQLite в Postgres."""
+    """Primary method of loading data from SQLite to Postgres."""
     postgres_saver = PostgresSaver(pg_conn)
     sqlite_loader = SQLiteLoader(connection)
 

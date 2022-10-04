@@ -21,7 +21,7 @@ class UUIDMixin(models.Model):
 
 
 class Genre(UUIDMixin, TimeStampedMixin):
-    """Жанр у фильма в онлайн-кинотеатре."""
+    """Film genre."""
 
     name = models.CharField(_('name'), max_length=255, unique=True)
     description = models.TextField(_('description'), blank=True)
@@ -36,16 +36,16 @@ class Genre(UUIDMixin, TimeStampedMixin):
 
 
 class FilmworkType(models.TextChoices):
-    """Тип фильма в онлайн-кинотеатре."""
+    """Film type."""
 
     MOVIE = 'MV', _('Film')
     TV_SHOW = 'TV', _('TV show')
 
 
 class FilmworkAgeRating(models.TextChoices):
-    """Возрастной рейтинг фильма.
+    """Film age rating.
 
-    Список возрастных рейтингов: https://bit.ly/3xuSpB0.
+    List of possible age ratings: https://bit.ly/3xuSpB0.
     """
 
     GENERAL = "G", _("G: General audience")
@@ -56,14 +56,14 @@ class FilmworkAgeRating(models.TextChoices):
 
 
 class FilmworkAccessType(models.TextChoices):
-    """Доступность фильма для просмотра."""
+    """Film access type (free, only for subscribers, etc.)."""
 
     PUBLIC = "public", _("Public")
     SUBSCRIPTION = "subscription", _("Subscription")
 
 
 class Filmwork(UUIDMixin, TimeStampedMixin):
-    """Фильм в онлайн-кинотеатре."""
+    """Film."""
 
     title = models.CharField(_('title'), max_length=255)
     description = models.TextField(_('description'), blank=True)
@@ -97,7 +97,7 @@ class Filmwork(UUIDMixin, TimeStampedMixin):
 
 
 class GenreFilmwork(UUIDMixin):
-    """Промежуточная таблица для связи жанров и фильмов."""
+    """Intermediate table for linking genres and films."""
 
     film_work = models.ForeignKey('Filmwork', verbose_name=_('film'), on_delete=models.CASCADE)
     genre = models.ForeignKey(
@@ -114,7 +114,7 @@ class GenreFilmwork(UUIDMixin):
 
 
 class Person(UUIDMixin, TimeStampedMixin):
-    """Участник съемочной группы в фильме."""
+    """Member of a film crew (actor, director, etc.)."""
 
     full_name = models.TextField(_("full name"), max_length=255)
 
@@ -128,7 +128,7 @@ class Person(UUIDMixin, TimeStampedMixin):
 
 
 class PersonRole(models.TextChoices):
-    """Роль участника съемочной команды."""
+    """Person role."""
 
     ACTOR = 'actor', _('actor')
     DIRECTOR = 'director', _('director')
@@ -136,7 +136,7 @@ class PersonRole(models.TextChoices):
 
 
 class PersonFilmwork(UUIDMixin):
-    """Промежуточная таблица для связи участников съемочной группы и фильмов."""
+    """Intermediate table for linking persons and films."""
 
     film_work = models.ForeignKey('Filmwork', verbose_name=_("film"), on_delete=models.CASCADE)
     person = models.ForeignKey(

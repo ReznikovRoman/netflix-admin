@@ -18,9 +18,9 @@ class Base(Configuration):
 
     PROJECT_NAME = 'NETFLIX'
     PROJECT_BASE_URL = from_environ('http://localhost', name="NA_PROJECT_BASE_URL")
-    # Идентификатор инсталляции, произвольная строка (e.g., 'stage', 'prod', 'production').
+    # Project environment (e.g., 'stage', 'prod', 'production').
     PROJECT_ENVIRONMENT = from_environ('unknown')
-    # Исправлять относительные MEDIA_URL и STATIC_URL на абсолютные, используя PROJECT_BASE_URL
+    # Fix relative MEDIA_URL and STATIC_URL to absolute ones using PROJECT_BASE_URL
     FIX_RELATIVE_URLS = from_environ(True)
 
     PROJECT_ROOT = Path(__file__).resolve().parent.parent

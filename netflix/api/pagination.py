@@ -9,10 +9,7 @@ class SmallResultsSetPagination(PageNumberPagination):
 
 
 class YandexStandardResultsSetPagination(PageNumberPagination):
-    """Пагинация со специфичными названиями полей.
-
-    Используется только на курсе Яндекс Практикума.
-    """
+    """Yandex-specific pagination with custom field names."""
 
     page_size = 50
 

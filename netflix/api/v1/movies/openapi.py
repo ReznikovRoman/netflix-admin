@@ -4,8 +4,8 @@ from .serializers import FilmworkSerializer
 
 
 filmwork_list = extend_schema(
-    summary="Список кинопроизведений.",
-    description="Получение списка всех кинопроизведений.",
+    summary="Film list.",
+    description="Get list of all films.",
     responses={
         '200': FilmworkSerializer,
         '201': None,
@@ -15,8 +15,8 @@ filmwork_list = extend_schema(
 )
 
 filmwork_detail = extend_schema(
-    summary="Кинопроизведение.",
-    description="Получение кинопроизведения по уникальному `id`.",
+    summary="Film.",
+    description="Get film details by `id`.",
     responses={
         '200': FilmworkSerializer,
         '201': None,

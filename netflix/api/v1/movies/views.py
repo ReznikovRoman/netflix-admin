@@ -16,7 +16,7 @@ class MovieViewSet(
     mixins.RetrieveModelMixin,
     viewsets.GenericViewSet,
 ):
-    """Viewset для работы с кинопроизведениями."""
+    """Viewset for working with films."""
 
     queryset = Filmwork.objects.none()
     permission_classes = [

@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 
 
 class MultiSerializerViewSetMixin:
-    """Миксин для выбора нужного сериалайзера из `serializer_classes`."""
+    """Mixin for selecting an appropriate serializer from `serializer_classes`."""
 
     serializer_classes: Optional[dict[str, Type[Serializer]]] = None
 

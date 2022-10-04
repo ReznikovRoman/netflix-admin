@@ -5,7 +5,7 @@ from netflix.movies.models import Filmwork, PersonRole
 
 
 class FilmworkRepository:
-    """Репозиторий для работы с данными кинопроизведений."""
+    """Repository for working with film data."""
 
     @staticmethod
     def get_filmworks_with_related_data() -> QuerySet[Filmwork]:

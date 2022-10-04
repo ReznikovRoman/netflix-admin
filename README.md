@@ -1,40 +1,41 @@
 # Netflix Admin
+_Netflix_ admin management panel.
 
-Административная панель для онлайн-кинотеатра _Netflix_.
-
-## Сервисы
+## Services
 - Netflix Admin:
-  - Панель администратора для управления онлайн-кинотеатром (редактирование фильмов, жанров, актеров)
+  - Online-cinema management panel. Admins can manage films, genres, actors/directors/writers/...
   - https://github.com/ReznikovRoman/netflix-admin
 - Netflix ETL:
-  - ETL пайплайн для синхронизации данных между БД сервиса Netflix Admin и Elasticsearch
+  - ETL pipeline for synchronizing data between "Netflix Admin" database and Elasticsearch
   - https://github.com/ReznikovRoman/netflix-etl
 - Netflix Movies API:
-  - АПИ фильмов
+  - Movies API
   - https://github.com/ReznikovRoman/netflix-movies-api
-    - Python клиент: https://github.com/ReznikovRoman/netflix-movies-client
+    - Python client: https://github.com/ReznikovRoman/netflix-movies-client
 - Netflix Auth API:
-  - Сервис авторизации - управление пользователями и ролями
+  - Authorization service - users and roles management
   - https://github.com/ReznikovRoman/netflix-auth-api
 - Netflix UGC:
-  - Сервис для работы с пользовательским контентом
+  - Service for working with user generated content (comments, likes, film reviews, etc.)
   - https://github.com/ReznikovRoman/netflix-ugc
 - Netflix Notifications:
-  - Сервис для отправки уведомлений
+  - Notifications service (email, mobile, push)
   - https://github.com/ReznikovRoman/netflix-notifications
 - Netflix Voice Assistant:
-  - Голосовой ассистент Netflix
+  - Online-cinema voice assistant
   - https://github.com/ReznikovRoman/netflix-voice-assistant
 
-## Настройка и запуск
+## Configuration
+Docker containers:
+1. server
+2. db
 
-Docker конфигурации содержат контейнеры:
-1. db (postgres)
-2. server (django, gunicorn)
+docker-compose files:
+ 1. `docker-compose.yml` - for local development.
 
-Для успешного запуска необходимо указать переменные окружения в файле `.env` в корне проекта.
+To run docker containers, you need to create a `.env` file in the root directory.
 
-**Формат `.env` файла:**
+**`.env` example:**
 
 ```
 ENV=.env
@@ -64,9 +65,7 @@ NA_DB_PASSWORD=
 NA_DB_POSTGRES_BATCH_SIZE=500
 ```
 
-В локальной конфигурации docker-compose нет контейнера `nginx`,
-а сервер запускается командой django-cadmin runserver_plus.
-Для локальной конфигурации также необходимо создать файл конфигурации Django `tb_content/settings/local.py`:
+To run project locally, you need to create local Django settings `tb_content/settings/local.py`:
 
 ```python
 import mimetypes
@@ -105,70 +104,63 @@ class Local(Base):
 
     Base.INSTALLED_APPS.extend(DEV_INSTALLED_APPS)
     Base.MIDDLEWARE.extend(DEV_MIDDLEWARE)
-
 ```
 
-**Запуск производится в два этапа:**
+### Start project:
 
-```
+Locally:
+```shell
 docker-compose build
 docker-compose up
 ```
 
-**Для заполнения БД тестовыми данными**
+**To fill DB with test data**
 ```shell
 docker-compose run --rm server bash -c "cd /app/scripts/load_db && python load_data.py"
 ```
 
-При старте gunicorn контейнера выполняется применение миграций и сбор статики.
+On startup migrations are applied and static files are collected.
 
-Перезапуск контейнеров вручную происходит в один этап:
+## Development
+In this project we use [`django-configurations`](https://django-configurations.readthedocs.io/en/latest/),
+therefore for running management commands instead of using `./manage.py` / `python -m django` / `django-admin`
+you have to use `django-cadmin`.
 
-```
-docker-compose restart
-```
-
-## Разработка
-
-В проекте используется [`django-configurations`](https://django-configurations.readthedocs.io/en/latest/), поэтому для выполнения management команд Django вместо `./manage.py` / `python -m django` / `django-admin` следует использовать `django-cadmin`.
-
-**Пример: Создание суперпользователя**
+**Example: Creating a superuser**
 ```shell
 django-cadmin createsuperuser
 ```
 
-Синхронизировать окружение с `requirements.txt` / `requirements.dev.txt` (установит отсутствующие пакеты, удалит лишние, обновит несоответствущие версии):
-
+Sync environment with `requirements.txt` / `requirements.dev.txt` (will install/update missing packages, remove redundant ones):
 ```shell
 make sync-requirements
 ```
 
-Перегенерировать `requirements.txt` / `requirements.dev.txt` (требуется после изменений в `requirements.in` / `requirements.dev.in`):
-
+Compile requirements.\*.txt files (have to re-compile after changes in requirements.\*.in):
 ```shell
 make compile-requirements
 ```
 
-Если в окружении требуется установить какие-либо пакеты, которые нужно только локально разработчику, то следует создать файл `requirements.local.in` и указывать зависимости в нём. Обязательно следует указывать constraints files (`-c ...`). Например, чтобы запускать `shell_plus` c `ptipython` (`django-cadmin shell_plus --ptipython`), нужно поставить пакеты `ipython` и `ptpython`, в таком случае файл `requirements.local.in` будет выглядеть примерно так (первые строки одинаковы для всех, остальное — зависимости для примера):
+Use `requirements.local.in` for local dependencies; always specify _constraints files_ (-c ...)
 
-```
+Example:
+```shell
+# requirements.local.txt
+
 -c requirements.txt
--c requirements.dev.txt
 
-ipython >=7, <8
-ptpython >=3, <4
+ipython
 ```
 
-Перед пушем коммита следует убедиться, что код соответствует принятым стандартам и соглашениям:
+### Code style:
+Before pushing a commit run all linters:
 
 ```shell
 make lint
 ```
 
-## Документация API
-
-Документация в формате OpenAPI 3 доступна по адресу:
-
-* `${PROJECT_BASE_URL}/api/v1/schema` (YAML или JSON, выбор через content negotiation заголовком `Accept`)
-* `${PROJECT_BASE_URL}/api/v1/schema/redoc` (ReDoc)
-* `${PROJECT_BASE_URL}/api/v1/schema/swagger` (Swagger UI)
+## Documentation
+OpenAPI 3 documentation:
+- `${PROJECT_BASE_URL}/api/v1/schema` - YAML or JSON, selection via content negotiation with the `Accept` header
+- `${PROJECT_BASE_URL}/api/v1/schema/redoc` - ReDoc
+- `${PROJECT_BASE_URL}/api/v1/schema/swagger` - Swagger

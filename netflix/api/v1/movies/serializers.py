@@ -4,13 +4,13 @@ from netflix.movies.models import Filmwork
 
 
 class NameListField(serializers.ListField):
-    """Поле для списка имен/названий."""
+    """Field for the list of names/titles."""
 
     name = serializers.CharField(read_only=True)
 
 
 class FilmworkSerializer(serializers.ModelSerializer):
-    """Сериалайзер для кинопроизведений."""
+    """Film serializer."""
 
     genres = NameListField(read_only=True)
     actors = NameListField(read_only=True)
