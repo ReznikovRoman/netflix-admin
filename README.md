@@ -1,6 +1,9 @@
 # Netflix Admin
 _Netflix_ admin management panel.
 
+## Stack
+[Django](https://www.djangoproject.com/), [Postgres](https://www.postgresql.org/), [Nginx](https://nginx.org/en/)
+
 ## Services
 - Netflix Admin:
   - Online-cinema management panel. Admins can manage films, genres, actors/directors/writers/...
